@@ -28,3 +28,27 @@ document.getElementById('bookForm').addEventListener('submit', function(event) {
     document.getElementById('year').value = '';
     document.getElementById('genre').value = '';
     document.getElementById('quantidade').value = '';
+
+    // URL do arquivo JSON no seu repositório GitHub
+const url = "https://raw.githubusercontent.com/USUARIO/REPOSITORIO/main/livros.json";
+
+// Função para carregar os livros do GitHub
+fetch(url)
+  .then(response => response.json())  // Converte o conteúdo em JSON
+  .then(data => {
+    // Aqui você pode processar os dados
+    console.log(data);
+
+    // Exemplo: Mostrar os livros no console
+    data.forEach(livro => {
+      console.log(`Título: ${livro.titulo}`);
+      console.log(`Autor: ${livro.autor}`);
+      console.log(`Ano: ${livro.ano}`);
+      console.log(`Gênero: ${livro.genero}`);
+      console.log('---');
+    });
+  })
+  .catch(error => {
+    console.error('Erro ao carregar os dados:', error);
+  });
+
