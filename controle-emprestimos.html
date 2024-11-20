@@ -1,0 +1,37 @@
+<!-- controle-emprestimos.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Empréstimos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Controle de Empréstimos</h1>
+    </header>
+
+    <form id="loanForm">
+        <label for="loanUser">Usuário:</label>
+        <select id="loanUser" required></select>
+
+        <label for="loanBook">Nome do Livro:</label>
+        <select id="loanBook" required></select>
+
+        <label for="loanDate">Data do Empréstimo:</label>
+        <input type="date" id="loanDate" required>
+
+        <label for="returnDate">Data de Devolução:</label>
+        <input type="date" id="returnDate" readonly>
+
+        <button type="submit">Registrar Empréstimo</button>
+    </form>
+
+    <footer>
+        <p><a href="index.html">Voltar para a página inicial</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

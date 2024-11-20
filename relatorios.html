@@ -1,0 +1,93 @@
+<!-- relatorios.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios de Biblioteca</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos para as tabelas e impressão */
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .report-table th, .report-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .report-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .print-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .print-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Relatórios da Biblioteca Escolar</h1>
+    </header>
+
+    <section>
+        <!-- Relatório de Livros -->
+        <h2>Relatório de Livros</h2>
+        <table class="report-table" id="booksTable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Editora</th>
+                    <th>Ano</th>
+                    <th>Autor</th>
+                    <th>Quantidade</th>
+                    <th>ISBN</th>
+                    <th>Gênero</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui os dados dos livros serão preenchidos dinamicamente via JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- Relatório de Usuários -->
+        <h2>Relatório de Usuários</h2>
+        <table class="report-table" id="usersTable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cargo</th>
+                    <th>CPF</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui os dados dos usuários serão preenchidos dinamicamente via JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- Botão de Impressão -->
+        <button class="print-button" onclick="window.print()">Imprimir Relatório</button>
+    </section>
+
+    <footer>
+        <p><a href="index.html">Voltar para a página inicial</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
