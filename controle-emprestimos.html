@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema para registrar e controlar empréstimos de livros.">
     <title>Controle de Empréstimos</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,21 +13,52 @@
         <h1>Controle de Empréstimos</h1>
     </header>
 
-    <form id="loanForm">
-        <label for="loanUser">Usuário:</label>
-        <select id="loanUser" required></select>
+    <main>
+        <section>
+            <h2>Registrar Empréstimo</h2>
+            <form id="loanForm" action="#" method="POST" aria-labelledby="formTitle">
+                <!-- Agrupando campos com fieldset -->
+                <fieldset>
+                    <legend>Dados do Empréstimo</legend>
+                    
+                    <!-- Campo Usuário -->
+                    <div class="form-group">
+                        <label for="loanUser">Usuário:</label>
+                        <select id="loanUser" name="loanUser" required aria-describedby="userHelpText">
+                            <!-- Opções do usuário serão adicionadas aqui via JavaScript -->
+                        </select>
+                        <small id="userHelpText">Selecione o usuário que está pegando o livro emprestado.</small>
+                    </div>
 
-        <label for="loanBook">Nome do Livro:</label>
-        <select id="loanBook" required></select>
+                    <!-- Campo Livro -->
+                    <div class="form-group">
+                        <label for="loanBook">Nome do Livro:</label>
+                        <select id="loanBook" name="loanBook" required aria-describedby="bookHelpText">
+                            <!-- Opções do livro serão adicionadas aqui via JavaScript -->
+                        </select>
+                        <small id="bookHelpText">Escolha o livro que está sendo emprestado.</small>
+                    </div>
 
-        <label for="loanDate">Data do Empréstimo:</label>
-        <input type="date" id="loanDate" required>
+                    <!-- Campo Data do Empréstimo -->
+                    <div class="form-group">
+                        <label for="loanDate">Data do Empréstimo:</label>
+                        <input type="date" id="loanDate" name="loanDate" required aria-describedby="loanDateHelpText">
+                        <small id="loanDateHelpText">Selecione a data em que o empréstimo foi realizado.</small>
+                    </div>
 
-        <label for="returnDate">Data de Devolução:</label>
-        <input type="date" id="returnDate" readonly>
+                    <!-- Campo Data de Devolução -->
+                    <div class="form-group">
+                        <label for="returnDate">Data de Devolução:</label>
+                        <input type="date" id="returnDate" name="returnDate" readonly aria-describedby="returnDateHelpText">
+                        <small id="returnDateHelpText">A data de devolução será calculada automaticamente.</small>
+                    </div>
 
-        <button type="submit">Registrar Empréstimo</button>
-    </form>
+                    <!-- Botão de Submissão -->
+                    <button type="submit">Registrar Empréstimo</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
 
     <footer>
         <p><a href="index.html">Voltar para a página inicial</a></p>
@@ -35,3 +67,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
