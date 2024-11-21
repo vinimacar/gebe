@@ -55,6 +55,28 @@ document.addEventListener('DOMContentLoaded', () => {
         
         alert('Livro cadastrado com sucesso!');
         updateBookList();
+
+        // Função para exibir a pré-visualização da capa do livro
+document.getElementById('bookCover').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            // Exibe a imagem selecionada na área de pré-visualização
+            const imageElement = document.getElementById('coverImage');
+            const previewElement = document.getElementById('coverPreview');
+            
+            imageElement.src = e.target.result; // Define o conteúdo da imagem
+            previewElement.style.display = 'block'; // Torna a pré-visualização visível
+        };
+
+        // Lê a imagem como URL
+        reader.readAsDataURL(file);
+    }
+});
+
     });
 
     // Cadastro da Escola
