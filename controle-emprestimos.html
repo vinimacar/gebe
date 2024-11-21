@@ -49,8 +49,8 @@
                     <!-- Campo Data de Devolução -->
                     <div class="form-group">
                         <label for="returnDate">Data de Devolução:</label>
-                        <input type="date" id="returnDate" name="returnDate" readonly aria-describedby="returnDateHelpText">
-                        <small id="returnDateHelpText">A data de devolução será calculada automaticamente.</small>
+                        <input type="date" id="returnDate" name="returnDate" aria-describedby="returnDateHelpText">
+                        <small id="returnDateHelpText">A data de devolução será calculada automaticamente, mas você pode escolher outra data.</small>
                     </div>
 
                     <!-- Botão de Submissão -->
@@ -64,7 +64,26 @@
         <p><a href="index.html">Voltar para a página inicial</a></p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Função para calcular a data de devolução
+        document.getElementById('loanDate').addEventListener('change', function() {
+            // Obter a data do empréstimo
+            const loanDate = new Date(this.value);
+            
+            // Verificar se a data do empréstimo é válida
+            if (!isNaN(loanDate)) {
+                // Adicionar 7 dias à data do empréstimo
+                loanDate.setDate(loanDate.getDate() + 7);
+
+                // Formatar a data para o formato 'yyyy-mm-dd'
+                const returnDate = loanDate.toISOString().split('T')[0];
+
+                // Definir a data de devolução no campo correspondente
+                document.getElementById('returnDate').value = returnDate;
+            }
+        });
+    </script>
+
 </body>
 </html>
 
