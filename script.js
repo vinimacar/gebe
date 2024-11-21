@@ -109,6 +109,26 @@ document.getElementById('bookCover').addEventListener('change', function(event) 
         alert('Empréstimo registrado com sucesso!');
     });
 
+    <script>
+        // Função para calcular a data de devolução
+        document.getElementById('loanDate').addEventListener('change', function() {
+            // Obter a data do empréstimo
+            const loanDate = new Date(this.value);
+            
+            // Verificar se a data do empréstimo é válida
+            if (!isNaN(loanDate)) {
+                // Adicionar 7 dias à data do empréstimo
+                loanDate.setDate(loanDate.getDate() + 7);
+
+                // Formatar a data para o formato 'yyyy-mm-dd'
+                const returnDate = loanDate.toISOString().split('T')[0];
+
+                // Definir a data de devolução no campo correspondente
+                document.getElementById('returnDate').value = returnDate;
+            }
+        });
+    </script>
+
     // Atualiza as listas de usuários e livros
     function updateUserList() {
         loanUserSelect.innerHTML = '';
