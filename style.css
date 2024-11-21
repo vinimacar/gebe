@@ -48,6 +48,60 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+/* Resetando estilos básicos */
+body, ul {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo do menu */
+nav {
+    background-color: #004d99; /* Cor de fundo do menu */
+    padding: 10px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+ul li {
+    margin: 0;
+}
+
+/* Estilo dos botões */
+a.btn {
+    display: inline-block;
+    background-color: #0066cc; /* Cor do botão */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a.btn:hover {
+    background-color: #004d99; /* Cor ao passar o mouse */
+    transform: scale(1.1); /* Efeito de zoom */
+}
+
+a.btn:active {
+    background-color: #003366; /* Cor quando o botão é clicado */
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
 
 footer {
     text-align: center;
