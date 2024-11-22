@@ -1,3 +1,5 @@
+//index
+<script async src="https://app3.weatherwidget.org/js/?id=ww_1c42ddfccbb"></script>
 document.addEventListener('DOMContentLoaded', () => {
     const userForm = document.getElementById('userForm');
     const bookForm = document.getElementById('bookForm');
