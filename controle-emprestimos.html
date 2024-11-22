@@ -1,84 +1,106 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema para registrar e controlar empréstimos de livros.">
     <title>Controle de Empréstimos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Controle de Empréstimos</h1>
+    </header>
 
-    <!-- Menu para alternar entre Empréstimo e Devolução -->
-    <div>
-        <button id="loanLink">Registrar Empréstimo</button>
-        <button id="returnLink">Registrar Devolução</button>
-    </div>
+    <main>
+        <!-- Seção de Registro de Empréstimo -->
+        <section>
+            <h2>Registrar Empréstimo</h2>
+            <form id="loanForm" action="#" method="POST" aria-labelledby="formTitle">
+                <fieldset>
+                    <legend>Dados do Empréstimo</legend>
 
-    <!-- Seção de Empréstimo -->
-    <div id="loanSection">
-        <h2>Registrar Empréstimo</h2>
-        <form id="loanForm">
-            <label for="loanUser">Usuário:</label>
-            <select id="loanUser" required></select>
-            <br>
+                    <!-- Campo Usuário -->
+                    <div class="form-group">
+                        <label for="loanUser">Usuário:</label>
+                        <select id="loanUser" name="loanUser" required aria-describedby="userHelpText">
+                            <!-- Opções do usuário serão adicionadas aqui via JavaScript -->
+                        </select>
+                        <small id="userHelpText">Selecione o usuário que está pegando o livro emprestado.</small>
+                    </div>
 
-            <label for="loanBook">Livro:</label>
-            <select id="loanBook" required></select>
-            <br>
+                    <!-- Campo Livro -->
+                    <div class="form-group">
+                        <label for="loanBook">Nome do Livro:</label>
+                        <select id="loanBook" name="loanBook" required aria-describedby="bookHelpText">
+                            <!-- Opções do livro serão adicionadas aqui via JavaScript -->
+                        </select>
+                        <small id="bookHelpText">Escolha o livro que está sendo emprestado.</small>
+                    </div>
 
-            <label for="loanDate">Data de Empréstimo:</label>
-            <input type="date" id="loanDate" required>
-            <br>
+                    <!-- Campo Data do Empréstimo -->
+                    <div class="form-group">
+                        <label for="loanDate">Data do Empréstimo:</label>
+                        <input type="date" id="loanDate" name="loanDate" required aria-describedby="loanDateHelpText">
+                        <small id="loanDateHelpText">Selecione a data em que o empréstimo foi realizado.</small>
+                    </div>
 
-            <label for="returnDate">Data de Devolução:</label>
-            <input type="date" id="returnDate" readonly>
-            <br>
+                    <!-- Campo Data de Devolução -->
+                    <div class="form-group">
+                        <label for="returnDate">Data de Devolução:</label>
+                        <input type="date" id="returnDate" name="returnDate" aria-describedby="returnDateHelpText">
+                        <small id="returnDateHelpText">A data de devolução será calculada automaticamente, mas você pode escolher outra data.</small>
+                    </div>
 
-            <button type="submit">Registrar Empréstimo</button>
-        </form>
-    </div>
+                    <!-- Botão de Submissão -->
+                    <button type="submit">Registrar Empréstimo</button>
+                </fieldset>
+            </form>
+        </section>
 
-    <!-- Seção de Devolução -->
-    <div id="returnSection" style="display: none;">
-        <h2>Registrar Devolução</h2>
-        <form id="returnForm">
-            <label for="returnUser">Usuário:</label>
-            <select id="returnUser" required></select>
-            <br>
+        <!-- Seção de Baixa de Empréstimo (Devolução) -->
+        <section>
+            <h2>Registrar Devolução</h2>
+            <form id="returnForm" action="#" method="POST" aria-labelledby="returnFormTitle">
+                <fieldset>
+                    <legend>Dados da Devolução</legend>
 
-            <label for="returnBook">Livro:</label>
-            <select id="returnBook" required></select>
-            <br>
+                    <!-- Campo Usuário para Devolução -->
+                    <div class="form-group">
+                        <label for="returnUser">Usuário:</label>
+                        <select id="returnUser" name="returnUser" required aria-describedby="returnUserHelpText">
+                            <!-- Opções do usuário para devolução serão adicionadas aqui via JavaScript -->
+                        </select>
+                        <small id="returnUserHelpText">Selecione o usuário que está devolvendo o livro.</small>
+                    </div>
 
-            <label for="returnDateAction">Data de Devolução:</label>
-            <input type="date" id="returnDateAction" required>
-            <br>
+                    <!-- Campo Livro para Devolução -->
+                    <div class="form-group">
+                        <label for="returnBook">Nome do Livro:</label>
+                        <select id="returnBook" name="returnBook" required aria-describedby="returnBookHelpText">
+                            <!-- Opções do livro para devolução serão adicionadas aqui via JavaScript -->
+                        </select>
+                        <small id="returnBookHelpText">Escolha o livro que está sendo devolvido.</small>
+                    </div>
 
-            <button type="submit">Registrar Devolução</button>
-        </form>
-    </div>
+                    <!-- Campo Data de Devolução -->
+                    <div class="form-group">
+                        <label for="returnDateAction">Data da Devolução:</label>
+                        <input type="date" id="returnDateAction" name="returnDateAction" required aria-describedby="returnDateActionHelpText">
+                        <small id="returnDateActionHelpText">Selecione a data em que o livro foi devolvido.</small>
+                    </div>
 
-    <!-- Comprovante de Empréstimo -->
-    <div id="loanComprovante" style="display: none;">
-        <h3>Comprovante de Empréstimo</h3>
-        <p>Usuário: <span id="comprovanteLoanUser"></span></p>
-        <p>Livro: <span id="comprovanteLoanBook"></span></p>
-        <p>Data de Empréstimo: <span id="comprovanteLoanDate"></span></p>
-        <p>Data de Devolução: <span id="comprovanteReturnDate"></span></p>
-        <button onclick="printComprovante('loanComprovante')">Imprimir Comprovante</button>
-    </div>
+                    <!-- Botão de Submissão -->
+                    <button type="submit">Registrar Devolução</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
 
-    <!-- Comprovante de Devolução -->
-    <div id="returnComprovante" style="display: none;">
-        <h3>Comprovante de Devolução</h3>
-        <p>Usuário: <span id="comprovanteReturnUser"></span></p>
-        <p>Livro: <span id="comprovanteReturnBook"></span></p>
-        <p>Data de Devolução: <span id="comprovanteReturnDate"></span></p>
-        <button onclick="printComprovante('returnComprovante')">Imprimir Comprovante</button>
-    </div>
+    <footer>
+        <p><a href="index.html">Voltar para a página inicial</a></p>
+    </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
-
-
 
