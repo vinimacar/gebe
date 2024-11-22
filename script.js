@@ -143,6 +143,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Registrar Empréstimo
+document.addEventListener('DOMContentLoaded', () => {
+    const loanLink = document.getElementById('loanLink');
+    const returnLink = document.getElementById('returnLink');
+    const loanSection = document.getElementById('loanSection');
+    const returnSection = document.getElementById('returnSection');
+    const loanForm = document.getElementById('loanForm');
+    const returnForm = document.getElementById('returnForm');
+
+    const loanUserSelect = document.getElementById('loanUser');
+    const loanBookSelect = document.getElementById('loanBook');
+    const returnUserSelect = document.getElementById('returnUser');
+    const returnBookSelect = document.getElementById('returnBook');
+    const returnDateInput = document.getElementById('returnDate');
+    const returnDateAction = document.getElementById('returnDateAction');
+
+    const users = [];
+    const books = [];
+    const loans = [];
+
+    // Função para preencher os campos de usuário e livro
+    function populateFields() {
+        users.forEach(user => {
+            const optionUser = document.createElement('option');
+            optionUser.value = user.name;
+            optionUser.textContent = user.name;
+            loanUserSelect.appendChild(optionUser);
+            returnUserSelect.appendChild(optionUser.cloneNode(true)); // Reutiliza a mesma lista para devolução
+        });
+
+        books.forEach(book => {
+            const optionBook = document.createElement('option');
+            optionBook.value = book.name;
+            optionBook.textContent = book.name;
+            loanBookSelect.appendChild(optionBook);
+            returnBookSelect.appendChild(optionBook.cloneNode(true)); // Reutiliza a mesma lista para devolução
+        });
+    }
+
+    // Alterna entre Empréstimo e Devolução
+    loanLink.addEventListener('click', () => {
+        loanSection.style.display = 'block';
+        returnSection.style.display = 'none';
+    });
+
+    returnLink.addEventListener('click', () => {
+        loanSection.style.display = 'none';
+        returnSection.style.display = 'block';
+    });
+
+    // Registrar Empréstimo
     loanForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
@@ -191,3 +241,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar os campos
     populateFields();
 });
+
