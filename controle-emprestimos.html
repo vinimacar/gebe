@@ -1,110 +1,83 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistema para registrar e controlar empréstimos de livros.">
     <title>Controle de Empréstimos</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Controle de Empréstimos</h1>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="#" id="loanLink">Requisição de Empréstimo</a></li>
-            <li><a href="#" id="returnLink">Devolução de Empréstimo</a></li>
-        </ul>
-    </nav>
+    <!-- Menu para alternar entre Empréstimo e Devolução -->
+    <div>
+        <button id="loanLink">Registrar Empréstimo</button>
+        <button id="returnLink">Registrar Devolução</button>
+    </div>
 
-    <main>
-        <!-- Seção de Requisição de Empréstimo -->
-        <section id="loanSection">
-            <h2>Registrar Empréstimo</h2>
-            <form id="loanForm" action="#" method="POST">
-                <fieldset>
-                    <legend>Dados do Empréstimo</legend>
-                    <div class="form-group">
-                        <label for="loanUser">Usuário:</label>
-                        <select id="loanUser" name="loanUser" required>
-                            <!-- Opções do usuário serão adicionadas aqui via JavaScript -->
-                        </select>
-                    </div>
+    <!-- Seção de Empréstimo -->
+    <div id="loanSection">
+        <h2>Registrar Empréstimo</h2>
+        <form id="loanForm">
+            <label for="loanUser">Usuário:</label>
+            <select id="loanUser" required></select>
+            <br>
 
-                    <div class="form-group">
-                        <label for="loanBook">Nome do Livro:</label>
-                        <select id="loanBook" name="loanBook" required>
-                            <!-- Opções do livro serão adicionadas aqui via JavaScript -->
-                        </select>
-                    </div>
+            <label for="loanBook">Livro:</label>
+            <select id="loanBook" required></select>
+            <br>
 
-                    <div class="form-group">
-                        <label for="loanDate">Data do Empréstimo:</label>
-                        <input type="date" id="loanDate" name="loanDate" required>
-                    </div>
+            <label for="loanDate">Data de Empréstimo:</label>
+            <input type="date" id="loanDate" required>
+            <br>
 
-                    <div class="form-group">
-                        <label for="returnDate">Data de Devolução:</label>
-                        <input type="date" id="returnDate" name="returnDate">
-                    </div>
+            <label for="returnDate">Data de Devolução:</label>
+            <input type="date" id="returnDate" readonly>
+            <br>
 
-                    <button type="submit">Registrar Empréstimo</button>
-                </fieldset>
-            </form>
-            <div id="loanComprovante" style="display: none;">
-                <h3>Comprovante de Empréstimo</h3>
-                <p><strong>Usuário:</strong> <span id="comprovanteLoanUser"></span></p>
-                <p><strong>Livro:</strong> <span id="comprovanteLoanBook"></span></p>
-                <p><strong>Data de Empréstimo:</strong> <span id="comprovanteLoanDate"></span></p>
-                <p><strong>Data de Devolução:</strong> <span id="comprovanteReturnDate"></span></p>
-                <button onclick="printComprovante('loanComprovante')">Imprimir Comprovante</button>
-            </div>
-        </section>
+            <button type="submit">Registrar Empréstimo</button>
+        </form>
+    </div>
 
-        <!-- Seção de Devolução de Empréstimo -->
-        <section id="returnSection" style="display: none;">
-            <h2>Registrar Devolução</h2>
-            <form id="returnForm" action="#" method="POST">
-                <fieldset>
-                    <legend>Dados da Devolução</legend>
-                    <div class="form-group">
-                        <label for="returnUser">Usuário:</label>
-                        <select id="returnUser" name="returnUser" required>
-                            <!-- Opções do usuário para devolução serão adicionadas aqui via JavaScript -->
-                        </select>
-                    </div>
+    <!-- Seção de Devolução -->
+    <div id="returnSection" style="display: none;">
+        <h2>Registrar Devolução</h2>
+        <form id="returnForm">
+            <label for="returnUser">Usuário:</label>
+            <select id="returnUser" required></select>
+            <br>
 
-                    <div class="form-group">
-                        <label for="returnBook">Nome do Livro:</label>
-                        <select id="returnBook" name="returnBook" required>
-                            <!-- Opções do livro para devolução serão adicionadas aqui via JavaScript -->
-                        </select>
-                    </div>
+            <label for="returnBook">Livro:</label>
+            <select id="returnBook" required></select>
+            <br>
 
-                    <div class="form-group">
-                        <label for="returnDateAction">Data da Devolução:</label>
-                        <input type="date" id="returnDateAction" name="returnDateAction" required>
-                    </div>
+            <label for="returnDateAction">Data de Devolução:</label>
+            <input type="date" id="returnDateAction" required>
+            <br>
 
-                    <button type="submit">Registrar Devolução</button>
-                </fieldset>
-            </form>
-            <div id="returnComprovante" style="display: none;">
-                <h3>Comprovante de Devolução</h3>
-                <p><strong>Usuário:</strong> <span id="comprovanteReturnUser"></span></p>
-                <p><strong>Livro:</strong> <span id="comprovanteReturnBook"></span></p>
-                <p><strong>Data da Devolução:</strong> <span id="comprovanteReturnDate"></span></p>
-                <button onclick="printComprovante('returnComprovante')">Imprimir Comprovante</button>
-            </div>
-        </section>
-    </main>
+            <button type="submit">Registrar Devolução</button>
+        </form>
+    </div>
 
-    <footer>
-        <p><a href="index.html">Voltar para a página inicial</a></p>
-    </footer>
+    <!-- Comprovante de Empréstimo -->
+    <div id="loanComprovante" style="display: none;">
+        <h3>Comprovante de Empréstimo</h3>
+        <p>Usuário: <span id="comprovanteLoanUser"></span></p>
+        <p>Livro: <span id="comprovanteLoanBook"></span></p>
+        <p>Data de Empréstimo: <span id="comprovanteLoanDate"></span></p>
+        <p>Data de Devolução: <span id="comprovanteReturnDate"></span></p>
+        <button onclick="printComprovante('loanComprovante')">Imprimir Comprovante</button>
+    </div>
 
+    <!-- Comprovante de Devolução -->
+    <div id="returnComprovante" style="display: none;">
+        <h3>Comprovante de Devolução</h3>
+        <p>Usuário: <span id="comprovanteReturnUser"></span></p>
+        <p>Livro: <span id="comprovanteReturnBook"></span></p>
+        <p>Data de Devolução: <span id="comprovanteReturnDate"></span></p>
+        <button onclick="printComprovante('returnComprovante')">Imprimir Comprovante</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
 
