@@ -100,6 +100,12 @@ footer {
     width: 100%;
     bottom: 0;
 }
+img {
+    width: 100%; /* A imagem vai ocupar 100% da largura do contêiner */
+    max-width: 500px; /* A largura máxima será 500px */
+    height: auto; /* A altura será ajustada automaticamente para manter a proporção da imagem */
+}
+
 
 /* Estilo para o formulário */
 form {
