@@ -219,3 +219,69 @@ const fullTime = `${hours}:${minutes}:${seconds}`;
 
 viewDate.textContent = formatedDay;
 viewTime.textContent = fullTime;
+       // Dados simulados de usuários e livros
+        const users = [
+            { id: 1, name: "João" },
+            { id: 2, name: "Maria" },
+            { id: 3, name: "Pedro" }
+        ];
+
+        const books = [
+            { id: 1, title: "JavaScript: O Guia Definitivo" },
+            { id: 2, title: "HTML & CSS: Design e Construção de Sites" },
+            { id: 3, title: "Node.js para Iniciantes" }
+        ];
+
+        // Função para preencher os campos de usuário e livro
+        function populateFields() {
+            const loanUserSelect = document.getElementById("loanUser");
+            const returnUserSelect = document.getElementById("returnUser");
+            const loanBookSelect = document.getElementById("loanBook");
+            const returnBookSelect = document.getElementById("returnBook");
+
+            // Preencher campos de usuários
+            users.forEach(user => {
+                const optionUser = document.createElement("option");
+                optionUser.value = user.id;
+                optionUser.textContent = user.name;
+                loanUserSelect.appendChild(optionUser);
+                returnUserSelect.appendChild(optionUser.cloneNode(true)); // Reutiliza a mesma lista para devolução
+            });
+
+            // Preencher campos de livros
+            books.forEach(book => {
+                const optionBook = document.createElement("option");
+                optionBook.value = book.id;
+                optionBook.textContent = book.title;
+                loanBookSelect.appendChild(optionBook);
+                returnBookSelect.appendChild(optionBook.cloneNode(true)); // Reutiliza a mesma lista para devolução
+            });
+        }
+
+        // Função para registrar o empréstimo
+        document.getElementById("loanForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const loanUser = document.getElementById("loanUser").value;
+            const loanBook = document.getElementById("loanBook").value;
+            const loanDate = document.getElementById("loanDate").value;
+
+            console.log(`Empréstimo registrado: Usuário ${loanUser}, Livro ${loanBook}, Data ${loanDate}`);
+            alert("Empréstimo registrado com sucesso!");
+        });
+
+        // Função para registrar a devolução
+        document.getElementById("returnForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const returnUser = document.getElementById("returnUser").value;
+            const returnBook = document.getElementById("returnBook").value;
+            const returnDate = document.getElementById("returnDateAction").value;
+
+            console.log(`Devolução registrada: Usuário ${returnUser}, Livro ${returnBook}, Data ${returnDate}`);
+            alert("Devolução registrada com sucesso!");
+        });
+
+        // Preencher os campos de usuário e livro ao carregar a página
+        window.onload = populateFields;
+    
