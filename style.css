@@ -164,4 +164,126 @@ body {
   font-size: 18px;
   font-family: "Arial", sans-serif;
 }
+/* Geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    color: #2c3e50;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+input, select {
+    padding: 8px;
+    font-size: 14px;
+    margin: 10px 0;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilo dos Formulários */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+form label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="date"] {
+    width: 100%;
+}
+
+/* Seções de Empréstimo e Devolução */
+#loanSection, #returnSection {
+    display: none;
+}
+
+#loanSection {
+    display: block;
+}
+
+#loanComprovante, #returnComprovante {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+#loanComprovante h3, #returnComprovante h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+#loanComprovante p, #returnComprovante p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Comprovante de Impressão */
+button {
+    margin-top: 15px;
+}
+
+/* Estilos para o Menu de Navegação */
+div > button {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+div > button:active {
+    background-color: #2980b9;
+}
+
+div {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    form, #loanComprovante, #returnComprovante {
+        width: 100%;
+        margin: 10px;
+    }
+
+    div > button {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+}
+
 
