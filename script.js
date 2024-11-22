@@ -93,7 +93,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Cadastro de Empréstimos
-    loanForm.addEventListener('submit', function(event) {
+    document.addEventListener('DOMContentLoaded', () => {
+    const loanLink = document.getElementById('loanLink');
+    const returnLink = document.getElementById('returnLink');
+    const loanSection = document.getElementById('loanSection');
+    const returnSection = document.getElementById('returnSection');
+    const loanForm = document.getElementById('loanForm');
+    const returnForm = document.getElementById('returnForm');
+
+    const loanUserSelect = document.getElementById('loanUser');
+    const loanBookSelect = document.getElementById('loanBook');
+    const returnUserSelect = document.getElementById('returnUser');
+    const returnBookSelect = document.getElementById('returnBook');
+    const returnDateInput = document.getElementById('returnDate');
+    const returnDateAction = document.getElementById('returnDateAction');
+
+    const users = [];
+    const books = [];
+    const loans = [];
+
+    // Função para preencher os campos de usuário e livro
+    function populateFields() {
+        users.forEach(user => {
+            const optionUser = document.createElement('option');
+            optionUser.value = user.name;
+            optionUser.textContent = user.name;
+            loanUserSelect.appendChild(optionUser);
+            returnUserSelect.appendChild(optionUser.cloneNode(true)); // Reutiliza a mesma lista para devolução
+        });
+
+        books.forEach(book => {
+            const optionBook = document.createElement('option');
+            optionBook.value = book.name;
+            optionBook.textContent = book.name;
+            loanBookSelect.appendChild(optionBook);
+            returnBookSelect.appendChild(optionBook.cloneNode(true)); // Reutiliza a mesma lista para devolução
+        });
+    }
+
+    // Alterna entre Empréstimo e Devolução
+    loanLink.addEventListener('click', () => {
+        loanSection.style.display = 'block';
+        returnSection.style.display = 'none';
+    });
+
+    returnLink.addEventListener('click', () => {
+        loanSection.style.display = 'none';
+        returnSection.style.display = 'block';
+    });
+
+    // Registrar Empréstimo
+    loanForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
         const user = loanUserSelect.value;
@@ -106,57 +156,38 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Empréstimo registrado com sucesso!');
     });
 
-    // Atualiza as listas de usuários e livros
-    function updateUserList() {
-        loanUserSelect.innerHTML = '';
-        users.forEach(user => {
-            const option = document.createElement('option');
-            option.value = user.name;
-            option.textContent = user.name;
-            loanUserSelect.appendChild(option);
-        });
+    // Registrar Devolução
+    returnForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const returnUser = returnUserSelect.value;
+        const returnBook = returnBookSelect.value;
+        const returnDate = returnDateAction.value;
+
+        // Encontrar o empréstimo correspondente e remover
+        const index = loans.findIndex(loan => loan.user === returnUser && loan.book === returnBook);
+        if (index !== -1) {
+            loans.splice(index, 1); // Remove o empréstimo da lista
+        }
+
+        // Preencher o comprovante de devolução
+        document.getElementById('comprovanteReturnUser').textContent = returnUser;
+        document.getElementById('comprovanteReturnBook').textContent = returnBook;
+        document.getElementById('comprovanteReturnDate').textContent = returnDate;
+
+        // Mostrar o comprovante
+        document.getElementById('returnComprovante').style.display = 'block';
+    });
+
+    // Função para imprimir o comprovante
+    function printComprovante(comprovanteId) {
+        const comprovante = document.getElementById(comprovanteId);
+        const printWindow = window.open('', '', 'height=500, width=800');
+        printWindow.document.write(comprovante.innerHTML);
+        printWindow.document.close();
+        printWindow.print();
     }
 
-    function updateBookList() {
-        loanBookSelect.innerHTML = '';
-        books.forEach(book => {
-            const option = document.createElement('option');
-            option.value = book.name;
-            option.textContent = book.name;
-            loanBookSelect.appendChild(option);
-        });
-    }
-
-    // Atualiza a data de devolução automaticamente
-    document.getElementById('loanDate').addEventListener('change', calculateReturnDate);
-
-    // Função para preencher os campos de usuário e livro no início
-    function populateFields() {
-        const loanUserSelect = document.getElementById("loanUser");
-        const returnUserSelect = document.getElementById("returnUser");
-        const loanBookSelect = document.getElementById("loanBook");
-        const returnBookSelect = document.getElementById("returnBook");
-
-        // Preencher campos de usuários
-        users.forEach(user => {
-            const optionUser = document.createElement("option");
-            optionUser.value = user.name;
-            optionUser.textContent = user.name;
-            loanUserSelect.appendChild(optionUser);
-            returnUserSelect.appendChild(optionUser.cloneNode(true)); // Reutiliza a mesma lista para devolução
-        });
-
-        // Preencher campos de livros
-        books.forEach(book => {
-            const optionBook = document.createElement("option");
-            optionBook.value = book.name;
-            optionBook.textContent = book.name;
-            loanBookSelect.appendChild(optionBook);
-            returnBookSelect.appendChild(optionBook.cloneNode(true)); // Reutiliza a mesma lista para devolução
-        });
-    }
-
-    // Chama a função para preencher os campos quando a página for carregada
-    window.onload = populateFields;
+    // Inicializar os campos
+    populateFields();
 });
-
