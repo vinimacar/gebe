@@ -219,7 +219,9 @@ const fullTime = `${hours}:${minutes}:${seconds}`;
 
 viewDate.textContent = formatedDay;
 viewTime.textContent = fullTime;
-       // Dados simulados de usuários e livros
+ 
+    <script>
+        // Dados simulados de usuários e livros
         const users = [
             { id: 1, name: "João" },
             { id: 2, name: "Maria" },
@@ -265,9 +267,16 @@ viewTime.textContent = fullTime;
             const loanUser = document.getElementById("loanUser").value;
             const loanBook = document.getElementById("loanBook").value;
             const loanDate = document.getElementById("loanDate").value;
+            const returnDate = document.getElementById("returnDate").value;
 
-            console.log(`Empréstimo registrado: Usuário ${loanUser}, Livro ${loanBook}, Data ${loanDate}`);
-            alert("Empréstimo registrado com sucesso!");
+            // Preencher o comprovante de empréstimo
+            document.getElementById("comprovanteLoanUser").textContent = users.find(user => user.id == loanUser).name;
+            document.getElementById("comprovanteLoanBook").textContent = books.find(book => book.id == loanBook).title;
+            document.getElementById("comprovanteLoanDate").textContent = loanDate;
+            document.getElementById("comprovanteReturnDate").textContent = returnDate;
+
+            // Mostrar o comprovante
+            document.getElementById("loanComprovante").style.display = "block";
         });
 
         // Função para registrar a devolução
@@ -278,10 +287,36 @@ viewTime.textContent = fullTime;
             const returnBook = document.getElementById("returnBook").value;
             const returnDate = document.getElementById("returnDateAction").value;
 
-            console.log(`Devolução registrada: Usuário ${returnUser}, Livro ${returnBook}, Data ${returnDate}`);
-            alert("Devolução registrada com sucesso!");
+            // Preencher o comprovante de devolução
+            document.getElementById("comprovanteReturnUser").textContent = users.find(user => user.id == returnUser).name;
+            document.getElementById("comprovanteReturnBook").textContent = books.find(book => book.id == returnBook).title;
+            document.getElementById("comprovanteReturnDate").textContent = returnDate;
+
+            // Mostrar o comprovante
+            document.getElementById("returnComprovante").style.display = "block";
         });
 
-        // Preencher os campos de usuário e livro ao carregar a página
+        // Função para imprimir o comprovante
+        function printComprovante(comprovanteId) {
+            const comprovante = document.getElementById(comprovanteId);
+            const printWindow = window.open('', '', 'height=500, width=800');
+            printWindow.document.write(comprovante.innerHTML);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Função para alternar entre as seções de empréstimo e devolução
+        document.getElementById("loanLink").addEventListener("click", function () {
+            document.getElementById("loanSection").style.display = "block";
+            document.getElementById("returnSection").style.display = "none";
+        });
+
+        document.getElementById("returnLink").addEventListener("click", function () {
+            document.getElementById("loanSection").style.display = "none";
+            document.getElementById("returnSection").style.display = "block";
+        });
+
+        // Preencher os campos no carregamento da página
         window.onload = populateFields;
+    </script>
     
