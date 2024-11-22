@@ -7,6 +7,25 @@
     <title>Gestão de Biblioteca Escolar</title>
     <link rel="stylesheet" href="style.css">
 </head>
+    <title>Data e Hora</title>
+    <script>
+        function mostrarDataHora() {
+            var agora = new Date();
+            var dia = agora.getDate().toString().padStart(2, '0');
+            var mes = (agora.getMonth() + 1).toString().padStart(2, '0'); // Meses começam do 0
+            var ano = agora.getFullYear();
+            var hora = agora.getHours().toString().padStart(2, '0');
+            var minutos = agora.getMinutes().toString().padStart(2, '0');
+            var segundos = agora.getSeconds().toString().padStart(2, '0');
+            
+            var dataHoraFormatada = dia + '/' + mes + '/' + ano + ' ' + hora + ':' + minutos + ':' + segundos;
+            
+            document.getElementById("dataHora").innerHTML = dataHoraFormatada;
+        }
+
+        // Atualiza a data e hora a cada segundo
+        setInterval(mostrarDataHora, 1000);
+    </script>
 <body>
     <header>
         <!-- Logo da Biblioteca -->
