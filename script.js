@@ -1,5 +1,6 @@
 //index
- <script async src="https://app3.weatherwidget.org/js/?id=ww_1c42ddfccbb"></script>
+
+<script async src="https://app3.weatherwidget.org/js/?id=ww_3c216dbd5e039"></script>
 
 
 document.addEventListener('DOMContentLoaded', () => {
