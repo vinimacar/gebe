@@ -14,13 +14,13 @@
     </header>
 
     <main>
+        <!-- Seção de Registro de Empréstimo -->
         <section>
             <h2>Registrar Empréstimo</h2>
             <form id="loanForm" action="#" method="POST" aria-labelledby="formTitle">
-                <!-- Agrupando campos com fieldset -->
                 <fieldset>
                     <legend>Dados do Empréstimo</legend>
-                    
+
                     <!-- Campo Usuário -->
                     <div class="form-group">
                         <label for="loanUser">Usuário:</label>
@@ -58,14 +58,51 @@
                 </fieldset>
             </form>
         </section>
+
+        <!-- Seção de Baixa de Empréstimo (Devolução) -->
+        <section>
+            <h2>Registrar Devolução</h2>
+            <form id="returnForm" action="#" method="POST" aria-labelledby="returnFormTitle">
+                <fieldset>
+                    <legend>Dados da Devolução</legend>
+
+                    <!-- Campo Usuário para Devolução -->
+                    <div class="form-group">
+                        <label for="returnUser">Usuário:</label>
+                        <select id="returnUser" name="returnUser" required aria-describedby="returnUserHelpText">
+                            <!-- Opções do usuário para devolução serão adicionadas aqui via JavaScript -->
+                        </select>
+                        <small id="returnUserHelpText">Selecione o usuário que está devolvendo o livro.</small>
+                    </div>
+
+                    <!-- Campo Livro para Devolução -->
+                    <div class="form-group">
+                        <label for="returnBook">Nome do Livro:</label>
+                        <select id="returnBook" name="returnBook" required aria-describedby="returnBookHelpText">
+                            <!-- Opções do livro para devolução serão adicionadas aqui via JavaScript -->
+                        </select>
+                        <small id="returnBookHelpText">Escolha o livro que está sendo devolvido.</small>
+                    </div>
+
+                    <!-- Campo Data de Devolução -->
+                    <div class="form-group">
+                        <label for="returnDateAction">Data da Devolução:</label>
+                        <input type="date" id="returnDateAction" name="returnDateAction" required aria-describedby="returnDateActionHelpText">
+                        <small id="returnDateActionHelpText">Selecione a data em que o livro foi devolvido.</small>
+                    </div>
+
+                    <!-- Botão de Submissão -->
+                    <button type="submit">Registrar Devolução</button>
+                </fieldset>
+            </form>
+        </section>
     </main>
 
     <footer>
         <p><a href="index.html">Voltar para a página inicial</a></p>
     </footer>
 
-   
-
 </body>
 </html>
+
 
