@@ -1,36 +1,59 @@
+/* Definir variáveis de cor para fácil manutenção */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0066cc;
+    --hover-color: #0056b3;
+    --active-color: #003366;
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --white: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --form-bg-color: #f9f9f9;
+    --btn-padding: 10px 20px;
+}
+
+/* Estilo geral */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 18px;
 }
 
+/* Cabeçalho */
 header {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--white);
     padding: 1rem;
     text-align: center;
 }
 
-h1 {
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    color: #2c3e50;
     margin: 0;
 }
 
+/* Formulário */
 form {
-    margin: 20px;
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: white;
+    background-color: var(--form-bg-color);
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--shadow-color);
 }
 
-label {
+form label {
+    display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-input, select, button {
+form input, form select, form button {
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     font-size: 16px;
@@ -38,25 +61,26 @@ input, select, button {
     border: 1px solid #ccc;
 }
 
-button {
-    background-color: #007bff;
-    color: white;
+form button {
+    background-color: var(--secondary-color);
+    color: var(--white);
     cursor: pointer;
+    border: none;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-/* Resetando estilos básicos */
-body, ul {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+form button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
 }
 
-/* Estilo do menu */
+form button:active {
+    background-color: var(--active-color);
+}
+
+/* Menu de Navegação */
 nav {
-    background-color: #004d99; /* Cor de fundo do menu */
+    background-color: #004d99;
     padding: 10px;
 }
 
@@ -64,31 +88,32 @@ ul {
     display: flex;
     justify-content: space-around;
     list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 ul li {
     margin: 0;
 }
 
-/* Estilo dos botões */
 a.btn {
     display: inline-block;
-    background-color: #0066cc; /* Cor do botão */
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--white);
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 a.btn:hover {
-    background-color: #004d99; /* Cor ao passar o mouse */
-    transform: scale(1.1); /* Efeito de zoom */
+    background-color: var(--hover-color);
+    transform: scale(1.05);
 }
 
 a.btn:active {
-    background-color: #003366; /* Cor quando o botão é clicado */
+    background-color: var(--active-color);
 }
 
 /* Rodapé */
@@ -100,183 +125,18 @@ footer {
     width: 100%;
     bottom: 0;
 }
-img {
-    width: 100%; /* A imagem vai ocupar 100% da largura do contêiner */
-    max-width: 600px; /* A largura máxima será 500px */
-    height: auto; /* A altura será ajustada automaticamente para manter a proporção da imagem */
-}
-
-
-/* Estilo para o formulário */
-form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-form label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #d8d5d5;
-    border-radius: 4px;
-}
-
-form button {
-    background-color: #0066cc;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-form button:hover {
-    background-color: #00060c;
-}
-
-/* Estilo para a pré-visualização da imagem */
-#coverPreview {
-    margin-top: 15px;
-    text-align: center;
-}
-
-#coverPreview img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    border: 1px solid #cacaca;
-}
-
-
-footer {
-    text-align: center;
-    margin-top: 20px;
-}
 
 footer a {
     color: #1063bd;
 }
-body {
-  font-size: 18px;
-  font-family: "Arial", sans-serif;
-}
-/* Geral */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
 
-h1, h2, h3 {
-    font-family: 'Arial', sans-serif;
-    color: #2c3e50;
-}
-
-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+/* Imagem */
+img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
     border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-input, select {
-    padding: 8px;
-    font-size: 14px;
-    margin: 10px 0;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Estilo dos Formulários */
-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto;
-}
-
-form label {
-    font-size: 16px;
-    display: block;
-    margin-bottom: 5px;
-}
-
-form input[type="date"] {
-    width: 100%;
-}
-
-/* Seções de Empréstimo e Devolução */
-#loanSection, #returnSection {
-    display: none;
-}
-
-#loanSection {
-    display: block;
-}
-
-#loanComprovante, #returnComprovante {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto;
-}
-
-#loanComprovante h3, #returnComprovante h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-#loanComprovante p, #returnComprovante p {
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-/* Comprovante de Impressão */
-button {
-    margin-top: 15px;
-}
-
-/* Estilos para o Menu de Navegação */
-div > button {
-    margin-right: 15px;
-    font-size: 18px;
-}
-
-div > button:active {
-    background-color: #2980b9;
-}
-
-div {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    border: 1px solid #cacaca;
 }
 
 /* Responsividade */
@@ -292,4 +152,59 @@ div {
     }
 }
 
+/* Estilo de comprovante */
+#coverPreview {
+    margin-top: 15px;
+    text-align: center;
+}
 
+#coverPreview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #cacaca;
+}
+
+/* Seções específicas */
+#loanSection, #returnSection {
+    display: none;
+}
+
+#loanSection {
+    display: block;
+}
+
+#loanComprovante, #returnComprovante {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+#loanComprovante h3, #returnComprovante h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+#loanComprovante p, #returnComprovante p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Estilos para o menu de navegação */
+div > button {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+div > button:active {
+    background-color: var(--hover-color);
+}
+
+div {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
