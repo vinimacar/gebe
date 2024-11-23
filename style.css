@@ -139,32 +139,6 @@ img {
     border: 1px solid #cacaca;
 }
 
-/* Responsividade */
-@media (max-width: 300px) {
-    form, #loanComprovante, #returnComprovante {
-        width: 100%;
-        margin: 10px;
-    }
-
-    div > button {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-}
-
-/* Estilo de comprovante */
-#coverPreview {
-    margin-top: 15px;
-    text-align: center;
-}
-
-#coverPreview img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    border: 1px solid #cacaca;
-}
-
 /* Seções específicas */
 #loanSection, #returnSection {
     display: none;
@@ -193,18 +167,124 @@ img {
     margin: 5px 0;
 }
 
-/* Estilos para o menu de navegação */
-div > button {
-    margin-right: 15px;
-    font-size: 18px;
+/* Responsividade */
+@media (max-width: 1200px) {
+    /* Para telas grandes de desktop */
+    form {
+        max-width: 600px;
+    }
+
+    nav ul {
+        justify-content: space-between;
+    }
+
+    div > button {
+        font-size: 18px;
+    }
 }
 
-div > button:active {
-    background-color: var(--hover-color);
+@media (max-width: 992px) {
+    /* Para dispositivos médios, como tablets e laptops pequenos */
+    form {
+        max-width: 500px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    div > button {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    footer {
+        padding: 15px;
+    }
 }
 
-div {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+@media (max-width: 768px) {
+    /* Para telas de tablets em modo retrato */
+    form {
+        max-width: 100%;
+        margin: 10px;
+    }
+
+    header {
+        padding: 1rem 10px;
+    }
+
+    #loanComprovante, #returnComprovante {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    div > button {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Para telas de celulares */
+    body {
+        font-size: 16px;
+    }
+
+    form {
+        max-width: 100%;
+        margin: 10px;
+    }
+
+    header {
+        padding: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #loanComprovante, #returnComprovante {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    div > button {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    /* Para telas de celulares muito pequenos */
+    body {
+        font-size: 14px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    form input,
+    form select,
+    form button {
+        font-size: 14px;
+    }
 }
