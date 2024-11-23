@@ -140,7 +140,7 @@ img {
 }
 
 /* Responsividade */
-@media (max-width: 600px) {
+@media (max-width: 300px) {
     form, #loanComprovante, #returnComprovante {
         width: 100%;
         margin: 10px;
