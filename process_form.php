@@ -5,26 +5,35 @@ include 'conexao.php';
 // Verificando se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Captura os dados do formulário
-    $nome = $_POST['schoolName'];
-    $codigo = $_POST['schoolCode'];
-    $cnpj = $_POST['schoolCnpj'];
-    $endereco = $_POST['schoolAddress'];
-    $telefone = $_POST['schoolPhone'];
-    $diretor = $_POST['schoolDirector'];
+    // Captura e limpa os dados do formulário para evitar XSS e SQL Injection
+    $nome = mysqli_real_escape_string($conn, $_POST['schoolName']);
+    $codigo = mysqli_real_escape_string($conn, $_POST['schoolCode']);
+    $cnpj = mysqli_real_escape_string($conn, $_POST['schoolCnpj']);
+    $endereco = mysqli_real_escape_string($conn, $_POST['schoolAddress']);
+    $telefone = mysqli_real_escape_string($conn, $_POST['schoolPhone']);
+    $diretor = mysqli_real_escape_string($conn, $_POST['schoolDirector']);
 
-    // SQL para inserir os dados na tabela
-    $sql = "INSERT INTO cadastroescola (Nome, Código, CNPJ, Endereco, Telefone, Diretor)
-            VALUES ('$nome', '$codigo', '$cnpj', '$endereco', '$telefone', '$diretor')";
+    // Preparando a consulta SQL para inserção
+    $stmt = $conn->prepare("INSERT INTO cadastroescola (Nome, Código, CNPJ, Endereco, Telefone, Diretor) 
+                            VALUES (?, ?, ?, ?, ?, ?)");
 
-    // Executando a consulta SQL
-    if ($conn->query($sql) === TRUE) {
-        echo "Escola cadastrada com sucesso!";
-    } else {
-        echo "Erro: " . $sql . "<br>" . $conn->error;
+    // Verificando se a consulta foi preparada corretamente
+    if ($stmt === false) {
+        die("Erro na preparação da consulta: " . $conn->error);
     }
 
-    // Fechando a conexão
+    // Vinculando os parâmetros da consulta
+    $stmt->bind_param("ssssss", $nome, $codigo, $cnpj, $endereco, $telefone, $diretor);
+
+    // Executando a consulta
+    if ($stmt->execute()) {
+        echo "Escola cadastrada com sucesso!";
+    } else {
+        echo "Erro: " . $stmt->error;
+    }
+
+    // Fechar a declaração e a conexão
+    $stmt->close();
     $conn->close();
 }
 ?>
