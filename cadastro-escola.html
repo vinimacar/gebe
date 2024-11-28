@@ -12,27 +12,28 @@
         <h1>Cadastro da Escola</h1>
     </header>
 
-    <form id="schoolForm">
+    <form id="schoolForm" action="process_form.php" method="POST">
         <label for="schoolName">Nome:</label>
-        <input type="text" id="schoolName" required>
-
+        <input type="text" id="schoolName" name="schoolName" required>
+    
         <label for="schoolCode">Código:</label>
-        <input type="text" id="schoolCode" required>
-
+        <input type="text" id="schoolCode" name="schoolCode" required>
+    
         <label for="schoolCnpj">CNPJ:</label>
-        <input type="text" id="schoolCnpj" required>
-
+        <input type="text" id="schoolCnpj" name="schoolCnpj" required>
+    
         <label for="schoolAddress">Endereço:</label>
-        <input type="text" id="schoolAddress" required>
-
+        <input type="text" id="schoolAddress" name="schoolAddress" required>
+    
         <label for="schoolPhone">Telefone:</label>
-        <input type="text" id="schoolPhone" required>
-
+        <input type="text" id="schoolPhone" name="schoolPhone" required>
+    
         <label for="schoolDirector">Diretor:</label>
-        <input type="text" id="schoolDirector" required>
-
+        <input type="text" id="schoolDirector" name="schoolDirector" required>
+    
         <button type="submit">Cadastrar Escola</button>
     </form>
+    
 
     <footer>
         <p><a href="index.html">Voltar para a página inicial</a></p>
@@ -41,3 +42,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
